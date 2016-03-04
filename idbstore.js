@@ -30,6 +30,7 @@
   var defaultSuccessHandler = function () {};
 
   var defaults = {
+    dbName: null,
     storeName: 'Store',
     storePrefix: 'IDBWrapper-',
     dbVersion: 1,
@@ -120,8 +121,10 @@
       this[key] = typeof kwArgs[key] != 'undefined' ? kwArgs[key] : defaults[key];
     }
 
-    this.dbName = this.storePrefix + this.storeName;
+    console.log(this.dbName);
+    this.dbName = this.dbName || this.storePrefix + this.storeName;
     this.dbVersion = parseInt(this.dbVersion, 10) || 1;
+    console.log(this.dbName);
 
     onStoreReady && (this.onStoreReady = onStoreReady);
 
