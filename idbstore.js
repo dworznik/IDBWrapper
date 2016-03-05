@@ -116,15 +116,12 @@
     if (Object.prototype.toString.call(kwArgs) != '[object Object]') {
       kwArgs = {};
     }
-
     for (var key in defaults) {
       this[key] = typeof kwArgs[key] != 'undefined' ? kwArgs[key] : defaults[key];
     }
 
-    console.log(this.dbName);
     this.dbName = this.dbName || this.storePrefix + this.storeName;
     this.dbVersion = parseInt(this.dbVersion, 10) || 1;
-    console.log(this.dbName);
 
     onStoreReady && (this.onStoreReady = onStoreReady);
 
@@ -282,7 +279,6 @@
      *
      */
     openDB: function () {
-
       var openRequest = this.idb.open(this.dbName, this.dbVersion);
       var preventSuccessCallback = false;
 
